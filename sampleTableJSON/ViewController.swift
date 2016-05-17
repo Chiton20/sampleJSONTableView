@@ -41,8 +41,22 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellSong",forIndexPath: indexPath);
         let dataCell = arraySongs[indexPath.row]
-        cell.textLabel?.text = dataCell["artist"] as? String
+        cell.textLabel?.text = "Song: \(dataCell["title"] as! String)"
+        cell.detailTextLabel?.text =  "Artist: \(dataCell["artist"] as! String)"
+        let urlCover = dataCell["img_url"] as! String
+        //print(urlCover.stringByReplacingOccurrencesOfString("http://fireflygrove.com/songnotes", withString: "http://www.songnotes.cc"))
+        /*
+        let url = NSURL(string: urlCover.stringByReplacingOccurrencesOfString("http://fireflygrove.com/songnotes", withString: "http://www.songnotes.cc"))
         
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            if let data = NSData(contentsOfURL: url!){
+                dispatch_async(dispatch_get_main_queue(), {
+                    cell.imageView!.image = UIImage(data: data)
+                });
+
+            }//make sure your image in this url does exist, otherwise unwrap in a if let check
+            
+                   }*/
         return cell
     }
     
