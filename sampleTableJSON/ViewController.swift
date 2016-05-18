@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 
 class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
@@ -44,6 +45,9 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         cell.textLabel?.text = "Song: \(dataCell["title"] as! String)"
         cell.detailTextLabel?.text =  "Artist: \(dataCell["artist"] as! String)"
         let urlCover = dataCell["img_url"] as! String
+        let url = urlCover.stringByReplacingOccurrencesOfString("http://fireflygrove.com/songnotes", withString: "http://www.songnotes.cc")
+        let urlComposite = NSURL(string: url.stringByReplacingOccurrencesOfString(".png", withString: ".jpg"))
+        cell.imageView!.af_setImageWithURL(urlComposite!)
         //print(urlCover.stringByReplacingOccurrencesOfString("http://fireflygrove.com/songnotes", withString: "http://www.songnotes.cc"))
         /*
         let url = NSURL(string: urlCover.stringByReplacingOccurrencesOfString("http://fireflygrove.com/songnotes", withString: "http://www.songnotes.cc"))
