@@ -47,7 +47,12 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         let urlCover = dataCell["img_url"] as! String
         let url = urlCover.stringByReplacingOccurrencesOfString("http://fireflygrove.com/songnotes", withString: "http://www.songnotes.cc")
         let urlComposite = NSURL(string: url.stringByReplacingOccurrencesOfString(".png", withString: ".jpg"))
-        cell.imageView!.af_setImageWithURL(urlComposite!)
+        cell.imageView?.af_setImageWithURL(urlComposite!, placeholderImage: UIImage (named: "cover_image"))
+        /*
+         cell.imageView!.af_setImageWithURL(urlComposite!,placeholderImage: nil, filter: nil, imageTransition: .None, completion: { (response) -> Void in
+         print("image: \(self.image)")
+         })
+         */
         //print(urlCover.stringByReplacingOccurrencesOfString("http://fireflygrove.com/songnotes", withString: "http://www.songnotes.cc"))
         /*
         let url = NSURL(string: urlCover.stringByReplacingOccurrencesOfString("http://fireflygrove.com/songnotes", withString: "http://www.songnotes.cc"))
