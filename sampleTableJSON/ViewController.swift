@@ -76,7 +76,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
                 print("Validation Successful")
                 if let JSON = response.result.value{
                     self.arraySongs = JSON["songs"]as! NSArray
-                    self.tblSongs.reloadData()
+                   //Animando la recarga de las celdas
+                    self.tblSongs.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
                 }
             case .Failure(let error):
                 print(error)
